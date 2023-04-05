@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Tag extends Model
+{
+    use HasFactory;
+
+    /**
+     * Relaciones muchos a muchos
+     */
+    public function posts(){
+        return $this->belongsToMany(Post::class);
+    }
+
+    /**
+     * Assignación masiva
+     */
+    protected $guarded = [];
+
+    /**
+     * slug
+     */
+    public function getRouteKeyName(){
+        return 'slug';
+    }
+}
